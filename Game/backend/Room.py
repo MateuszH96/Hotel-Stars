@@ -74,9 +74,3 @@ class Room:
             float: pointer of employee
         """
         return self.__employeesPointer
-
-a = Room()
-b = Room()
-lista = [[a, 0],[]]
-lista[0][1] = b
-print(lista)
