@@ -1,6 +1,6 @@
 from ValuesBacked import *
-
-
+from random import uniform
+from math import floor
 class Location:
     """
         Class is responsible for operations like create a Location
@@ -8,20 +8,8 @@ class Location:
 
     # Constructors
     def __init__(self, typeOfLocation):
-        self.locationValuesList = INITIAL_LOCATION_VALUES_LIST
-        self.numberOfCustomers = INITIAL_NUMBER_OF_CUSTOMERS
-        self.numberOfNormalCustomers = int(self.numberOfCustomers * self.locationValuesList[INITIAL_LOCATION_NAME_LIST.index(typeOfLocation)])
-        self.numberOfVipCustomers = self.numberOfCustomers - self.numberOfNormalCustomers
-
-
-    def getNumberOfCustomers(self):
-        """
-            Getter to return number of customers
-
-            Returns:
-                int: Number of customers
-        """
-        return self.numberOfCustomers
+        self.__numberOfCustomers = INITIAL_NUMBER_OF_CUSTOMERS
+        self.__ptrVIP = LOCATION_VIP_PTR[typeOfLocation]
 
     def getNumberOfVipCustomers(self):
         """
@@ -30,7 +18,7 @@ class Location:
             Returns:
                 int: Number of vip customers
         """
-        return self.numberOfVipCustomers
+        return self.__numOfVIP
 
     def getNumberOfNormalCustomers(self):
         """
@@ -39,17 +27,16 @@ class Location:
             Returns:
                 int: Number of vip customers
         """
-        return self.numberOfNormalCustomers
-
-
-    def setNewNumberOfCustomers(self, newNumberOfCustomers):
-        """
-            Setter to set room cost value
-
-            Returns:
-             int: new number of Customers
-        """
-        self.numberOfNormalCustomers = newNumberOfCustomers
-
-    def setNewLocationValuesList(self):
-        pass
+        return self.__numberOfCustomers - self.__numOfVIP
+    
+    def changeTurn(self): #wywoałnie zmiany tury
+        self.__generateNewNumberOfCustomer()
+    
+    def __generateNewNumberOfCustomer(self,dwBand=DW_BAND,upBand=UP_BAND): 
+        #generowanie nowej liczby gości i vipów, normalni są obliczani jako wszyscy-VIP 
+        #upBand i dwBand są granicami przedziału losowania w przypadku bonusu można je zmieniać
+        mulCustomers = uniform(dwBand,upBand)
+        self.__numberOfCustomers = floor(self.__numberOfCustomers * mulCustomers)
+        self.__numOfVIP = floor(self.__numberOfCustomers * uniform(0,self.__ptrVIP))
+    
+    

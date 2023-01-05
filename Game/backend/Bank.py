@@ -15,41 +15,19 @@ class Bank:
         self.sumEarnings()
     
     #Public 
-    def sumEarnings(self):
-        """Method resposible for adding up the earnings
-        """
-        self.__earnings.sum([Bank() for x in range(len(EARN_LIST))])
-
-    def addEarnings(self):
+    def addEarnings(self, earnings):
         """Method resposible for adding new earnings to the list
         """
-        if len(EARN_LIST) < 4:
-            self.__earnings.append([Bank() for x in range(EARN_LIST)])
-        if len(EARN_LIST) == 4:
+        if len(EARN_LIST) < LAST_FOUR_QUARTERS:
+            self.__earnings.append(earnings)
+        else:
             self.__earnings.pop(0)
-            self.__earnings.append([Bank() for x in range(EARN_LIST)])
+            self.__earnings.append(earnings)
 
-    def getCreditorthiness(self):
-        self.__creditworthiness = mean(self.__earnings)/ DIVIDER
-        """
-        Getter to return creditworthiness
-
-        Returns:
-            int: creditworthiness
-        """
-        return self.__creditworthiness
+    def getCreditorthiness(self):#funkcja podaje wartość na jaką można wziąć kredyt
+        return mean(self.__earnings)/ DIVIDER
     
-    def getCredit(self):
-         """
-        Getter to return credit
-
-        Returns:
-            int: credit
-        """
-
-
-
-
-    
- 
-
+    def getCredit(self,money):
+        if self.getCreditorthiness <= money:
+            return money
+        return 0
