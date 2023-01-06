@@ -1,4 +1,4 @@
-from ValuesBacked import *
+from . import ValuesBacked as VB
 from statistics import mean
 
 class Bank:
@@ -11,21 +11,20 @@ class Bank:
     def __init__(self):
         """Constructor
         """
-        self.__earnings = EARN_LIST 
-        self.sumEarnings()
+        self.__earnings = VB.EARN_LIST
     
     #Public 
     def addEarnings(self, earnings):
         """Method resposible for adding new earnings to the list
         """
-        if len(EARN_LIST) < LAST_FOUR_QUARTERS:
+        if len(self.__earnings) < VB.LAST_FOUR_QUARTERS:
             self.__earnings.append(earnings)
         else:
             self.__earnings.pop(0)
             self.__earnings.append(earnings)
 
     def getCreditorthiness(self):#funkcja podaje wartość na jaką można wziąć kredyt
-        return mean(self.__earnings)/ DIVIDER
+        return mean(self.__earnings)/ VB.DIVIDER
     
     def getCredit(self,money):
         if self.getCreditorthiness <= money:

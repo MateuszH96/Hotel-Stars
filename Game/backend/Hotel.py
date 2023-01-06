@@ -1,5 +1,5 @@
-from ValuesBacked import *
-from Room import Room
+from . import ValuesBacked as VB
+from . import Room
 from math import nan,floor
 
 class Hotel:
@@ -12,7 +12,7 @@ class Hotel:
         """Constructor
         """
         self.__floors = []
-        self.__roomCost = FLOOR_COST_INITIAL
+        self.__roomCost = VB.FLOOR_COST_INITIAL
         self.addFloor()
 
     # Private
@@ -22,7 +22,7 @@ class Hotel:
     def addFloor(self):
         """Method resposible for add floor in hotel
         """
-        self.__floors.append([Room() for x in range(ROOMS_PER_FLOOR)])
+        self.__floors.append([Room.Room() for x in range(VB.ROOMS_PER_FLOOR)])
 
 
     def getFloor(self, index=0):

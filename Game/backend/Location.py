@@ -1,6 +1,6 @@
-from ValuesBacked import *
 from random import uniform
 from math import floor
+from . import ValuesBacked as VB
 class Location:
     """
         Class is responsible for operations like create a Location
@@ -8,8 +8,8 @@ class Location:
 
     # Constructors
     def __init__(self, typeOfLocation):
-        self.__numberOfCustomers = INITIAL_NUMBER_OF_CUSTOMERS
-        self.__ptrVIP = LOCATION_VIP_PTR[typeOfLocation]
+        self.__numberOfCustomers = VB.INITIAL_NUMBER_OF_CUSTOMERS
+        self.__ptrVIP = VB.LOCATION_VIP_PTR[typeOfLocation]
 
     def getNumberOfVipCustomers(self):
         """
@@ -32,7 +32,7 @@ class Location:
     def changeTurn(self): #wywoałnie zmiany tury
         self.__generateNewNumberOfCustomer()
     
-    def __generateNewNumberOfCustomer(self,dwBand=DW_BAND,upBand=UP_BAND): 
+    def __generateNewNumberOfCustomer(self,dwBand=VB.DW_BAND,upBand=VB.UP_BAND): 
         #generowanie nowej liczby gości i vipów, normalni są obliczani jako wszyscy-VIP 
         #upBand i dwBand są granicami przedziału losowania w przypadku bonusu można je zmieniać
         mulCustomers = uniform(dwBand,upBand)

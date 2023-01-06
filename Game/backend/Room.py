@@ -1,4 +1,4 @@
-from ValuesBacked import *
+from . import ValuesBacked as VB
 
 class Room:
     """
@@ -6,8 +6,8 @@ class Room:
     """
     # Constructors
     def __init__(self):
-        self.__listEmployees=EMPLOYEE_LIST_NUM
-        self.__setValues(VIP_FALSE,ROOM_LEVEL_INITIAL_VALUE)
+        self.__listEmployees=VB.EMPLOYEE_LIST_NUM
+        self.__setValues(VB.VIP_FALSE,VB.ROOM_LEVEL_INITIAL_VALUE)
             
     # Private
     def __setValues(self,isVip, roomLvl):
@@ -24,9 +24,9 @@ class Room:
             bool: Returns True when room level successfully demolished, otherwise false
         """
         if self.__roomLevel + 1 == len(self.__listEmployees):
-            self.__setValues(VIP_TRUE, self.__roomLevel + 1)
+            self.__setValues(VB.VIP_TRUE, self.__roomLevel + 1)
         elif self.__roomLevel + 1 < len(self.__listEmployees):
-            self.__setValues(VIP_FALSE, self.__roomLevel + 1)
+            self.__setValues(VB.VIP_FALSE, self.__roomLevel + 1)
         else:
             return False
         return True

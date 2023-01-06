@@ -1,7 +1,7 @@
-from ValuesBacked import *
-from Location import Location
-from Hotel import Hotel
-from Bank import Bank
+from . import ValuesBacked as VB
+from . import Hotel
+from . import Location
+from . import Bank
 
 class Player:
     """
@@ -11,11 +11,11 @@ class Player:
     # Constructors
     def __init__(self, playerName, typeOfLocation):
         self.__playerName = playerName
-        self.__numberOfMoney = INITIAL_MONEY
-        self.__numberOfDebt = INITIAL_DEBT
-        self.__location = Location(typeOfLocation)
-        self.__hotel = Hotel()
-        self.__bank = Bank()
+        self.__numberOfMoney = VB.INITIAL_MONEY
+        self.__numberOfDebt = VB.INITIAL_DEBT
+        self.__location = Location.Location(typeOfLocation)
+        self.__hotel = Hotel.Hotel()
+        self.__bank = Bank.Bank()
 
 
     #Getter
