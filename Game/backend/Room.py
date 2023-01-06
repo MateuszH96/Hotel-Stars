@@ -41,7 +41,7 @@ class Room:
             bool: Returns True when room level successfully raised, otherwise false
         """
         if self.__roomLevel - 1 != 0:
-            self.__setValues(VIP_FALSE, self.__roomLevel - 1)
+            self.__setValues(VB.VIP_FALSE, self.__roomLevel - 1)
         else:
             return False
         return True
