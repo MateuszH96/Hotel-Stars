@@ -5,6 +5,7 @@ from .frontend.Btn import Btn
 from .frontend.BtnPickNumPlayer import BtnPickNumPlayer
 from .frontend.Collision import Collision
 from .frontend.Window import Window
+from .GameHotel import GameHotel
 class NumOfPlayer(Window):
     def __init__(self,screen, clock):
         self.__window = Window(clock,screen)
@@ -35,7 +36,8 @@ class NumOfPlayer(Window):
     
     def __isOkClicked(self):
         if Collision.isCollisionRectMouse(self.__btnOK):
-            self.__btnOK.onClick(self.__players,self.__window)
+            startValues = self.__btnOK.onClick(self.__players,self.__window)
+            game = GameHotel(startValues[0],startValues[1])
     
     def __createListObjects(self):
         text = self.__font.render(str(self.__players), True, VG.FONT_COLOR_NUM_PLAYER)

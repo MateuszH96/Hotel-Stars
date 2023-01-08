@@ -7,4 +7,4 @@ class BtnPickNumPlayer(Btn):
     def onClick(self, numPlayer,window):
         pickName = PickName(numPlayer,window)
         pickName.render()
-        pass
+        return pickName.getResults()

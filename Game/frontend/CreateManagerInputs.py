@@ -7,6 +7,7 @@ class CreateManagerInputs:
     @staticmethod
     def createManagerInputs(inputsList,windowSize):
         MANAGER =pg_ui.UIManager((windowSize))
+        listToReturn=[]
         for i in range(len(inputsList)):
             tmp= inputsList[i]
             inputVal = pg_ui.elements.UITextEntryLine(relative_rect=pg.Rect(((tmp.getX(),tmp.getY()),
@@ -14,7 +15,8 @@ class CreateManagerInputs:
                                                                          manager=MANAGER,
                                                                          object_id = tmp.getId()))
             inputVal.set_text(tmp.getText())
-        return MANAGER
+            listToReturn.append(inputVal)
+        return (MANAGER, listToReturn)
     
     
     @staticmethod
