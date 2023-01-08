@@ -1,6 +1,7 @@
 from . import ValuesBacked as VB
 from . import Room
-from math import nan,floor
+from math import nan, floor
+
 
 class Hotel:
     """
@@ -16,14 +17,13 @@ class Hotel:
         self.addFloor()
 
     # Private
-    
-    
+
     # Public
+
     def addFloor(self):
         """Method resposible for add floor in hotel
         """
         self.__floors.append([Room.Room() for x in range(VB.ROOMS_PER_FLOOR)])
-
 
     def getFloor(self, index=0):
         """Getter to return listo of rooms in floor
@@ -35,7 +35,6 @@ class Hotel:
         """
         return self.__floors[index]
 
-
     def getAllFloor(self):
         """Getter to return list of flors in hotel
 
@@ -43,8 +42,7 @@ class Hotel:
             List: List of floors in Hotel
         """
         return self.__floors
-    
-    
+
     def getLevelRoomCost(self, level):
         """_summary_
 
@@ -67,9 +65,8 @@ class Hotel:
             costValue (float): Cost of rooms 
         """
         self.__roomCost[indexOfLevel] = costValue
-        
 
-    def changeLevelRoom(self,floor, room, upgrade=True):
+    def changeLevelRoom(self, floor, room, upgrade=True):
         """Method resposible for upgrade/downgrade room
 
         Args:
@@ -83,7 +80,7 @@ class Hotel:
         if upgrade:
             return self.__floors[floor][room].upgradeRoom()
         return self.__floors[floor][room].downgradeRoom()
-    
+
     def getAllEployees(self):
         """Getter to return number of employees
 
@@ -94,10 +91,10 @@ class Hotel:
         for i in self.__floors:
             for j in i:
                 toReturn += j.getEmployeeValue()
-        
+
         toReturn = floor(toReturn)
         return toReturn
-    
+
     def getAllRoomsNum(self):
         """Getter to return number of all rooms
 
@@ -108,9 +105,9 @@ class Hotel:
         for i in self.__floors:
             for j in i:
                 if j.getRoomLevel() != 0:
-                    toReturn+=1
+                    toReturn += 1
         return toReturn
-    
+
     def getRoomLevel(self, floor, numberOfRoom):
         """_summary_
 

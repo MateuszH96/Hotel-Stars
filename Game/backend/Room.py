@@ -1,20 +1,22 @@
 from . import ValuesBacked as VB
 
+
 class Room:
     """
         Class is resposible for operations like create, update o increase level of Room
     """
     # Constructors
+
     def __init__(self):
-        self.__listEmployees=VB.EMPLOYEE_LIST_NUM
-        self.__setValues(VB.VIP_FALSE,VB.ROOM_LEVEL_INITIAL_VALUE)
-            
+        self.__listEmployees = VB.EMPLOYEE_LIST_NUM
+        self.__setValues(VB.VIP_FALSE, VB.ROOM_LEVEL_INITIAL_VALUE)
+
     # Private
-    def __setValues(self,isVip, roomLvl):
+    def __setValues(self, isVip, roomLvl):
         self.__isVip = isVip
         self.__roomLevel = roomLvl
         self.__employeesPointer = self.__listEmployees[self.__roomLevel]
-        
+
     # Public
     def upgradeRoomLvl(self):
         """
@@ -30,9 +32,7 @@ class Room:
         else:
             return False
         return True
-    
-    
-    
+
     def downgradeRoomLvl(self):
         """
         Function is resposible for for downgrade Room
@@ -45,8 +45,7 @@ class Room:
         else:
             return False
         return True
-        
-    
+
     def getRoomLevel(self):
         """
         Getter to return level of room
@@ -55,8 +54,7 @@ class Room:
             int: Room Level
         """
         return self.__roomLevel
-    
-    
+
     def getVipStatus(self):
         """
         Getter to return VIP status room 
@@ -64,8 +62,7 @@ class Room:
             bool: VIP status room
         """
         return self.__isVip
-    
-    
+
     def getEmployeeValue(self):
         """
         Getter to return value of employees 

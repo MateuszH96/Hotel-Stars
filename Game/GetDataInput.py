@@ -1,12 +1,13 @@
-from .frontend.GameObjects import GameObject
-from .frontend.Window import Window
-from .frontend.Btn import Btn
-from . import ValueGame as VG
-from .frontend.Draw import Draw
-from .frontend.InputText import InputText
-from .frontend.Collision import Collision
 import pygame as pg
 import pygame_gui as pg_ui
+
+from . import ValueGame as VG
+from .frontend.Btn import Btn
+from .frontend.Collision import Collision
+from .frontend.Draw import Draw
+from .frontend.GameObjects import GameObject
+from .frontend.InputText import InputText
+from .frontend.Window import Window
 
 
 class GetDataInput(GameObject):
@@ -23,11 +24,12 @@ class GetDataInput(GameObject):
         self.__decline = Btn("Decline.jpg", int(
             self._x + self._width/4), int(self._y+self._height/4), 100, 100)
 
-    def getText(self,title="Wpisz tu swój text"):
+    def getText(self, title="Wpisz tu swój text"):
         repeat = True
         toReturn = None
         listObject = Draw.transfomrToCenter(self.__createListObject())
-        inputTextObject = InputText("#inputValue", title,self._x, int(self._y/4*3), 400, 50)
+        inputTextObject = InputText(
+            "#inputValue", title, self._x, int(self._y/4*3), 400, 50)
         MANAGER = pg_ui.UIManager(VG.SIZE)
         TEXT_INPUT = pg_ui.elements.UITextEntryLine(relative_rect=pg.Rect((int(inputTextObject.getX()-inputTextObject.getWidth()/2), inputTextObject.getY()),
                                                                           (int(inputTextObject.getWidth()), inputTextObject.getHeight())),
@@ -50,6 +52,7 @@ class GetDataInput(GameObject):
             pg.display.update()
             self.__window.getClock().tick(60)
         return toReturn
+
     def __createListObject(self):
         toReturn = []
         toReturn.append([self.__background, (self._x, self._y)])

@@ -3,6 +3,7 @@ from . import Hotel
 from . import Location
 from . import Bank
 
+
 class Player:
     """
         Class is responsible for operations like create and update a player and its attributes
@@ -17,17 +18,17 @@ class Player:
         self.__hotel = Hotel.Hotel()
         self.__bank = Bank.Bank()
 
+    # Getter
 
-    #Getter
     def getHotel(self):
         return self.__hotel
-    
+
     def getLocation(self):
         return self.__location
-    
+
     def getBank(self):
         return self.__bank
-    
+
     def getPlayerName(self):
         """
             Getter to return player name
@@ -57,7 +58,6 @@ class Player:
 
     def addFloorValue(self):
         self.__hotel.addFloor()
-
 
     def setRoomLevelCostValue(self, indexOfLevel, costValue):
         """
