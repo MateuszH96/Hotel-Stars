@@ -2,10 +2,11 @@ from . import Btn
 import pygame as pg
 class Collision:
     @staticmethod
-    def isCollisionRectMouse(button):
+    def isCollisionRectMouse(objectToCollision):
+    #wykrywanie kolizji kliknięcia na objekt
         mousePos = pg.mouse.get_pos()
-        mouseX = mousePos[0]+int(button.getWidth()/2)
-        mouseY = mousePos[1]+int(button.getHeight()/2)
-        x = mouseX>=button.getX() and mouseX<=(button.getX() + button.getWidth())
-        y = mouseY>=button.getY() and mouseY<=(button.getY() + button.getHeight())
+        mouseX = mousePos[0]+int(objectToCollision.getWidth()/2)
+        mouseY = mousePos[1]+int(objectToCollision.getHeight()/2)
+        x = mouseX>=objectToCollision.getX() and mouseX<=(objectToCollision.getX() + objectToCollision.getWidth())
+        y = mouseY>=objectToCollision.getY() and mouseY<=(objectToCollision.getY() + objectToCollision.getHeight())
         return (x and y)

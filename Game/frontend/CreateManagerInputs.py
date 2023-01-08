@@ -6,6 +6,7 @@ import pygame as pg
 class CreateManagerInputs:
     @staticmethod
     def createManagerInputs(inputsList,windowSize):
+    #tworzenie menagera UI 
         MANAGER =pg_ui.UIManager((windowSize))
         listToReturn=[]
         for i in range(len(inputsList)):
@@ -21,6 +22,7 @@ class CreateManagerInputs:
     
     @staticmethod
     def createInputsList(numOfInputs,screenSize,textInput,idName):
+    #Tworzenie listy inputów     
         inputs = []
         windowPart = int(screenSize[1] / numOfInputs)
         y = int(windowPart/2)

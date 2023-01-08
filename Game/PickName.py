@@ -21,6 +21,7 @@ class PickName:
         self.__background = pg.transform.scale(self.__background,(VG.SIZE))
         self.__result =[]
     def getResults(self):
+        #lista 2 elementowa zwracająca listę imion graczy i wybrane lokalizacje
         return self.__result
     
     def __ButtonSavePressed(self):
@@ -31,6 +32,7 @@ class PickName:
         self.__result.append(self.__btnSaveNames.onClick(self.__window,names))
     
     def render(self):
+        #generowanie obrazu i logiki wyboru imion graczy
         pg.init()
         pg.display.set_caption(VG.GAME_NAME)
         repeat = True
@@ -44,12 +46,11 @@ class PickName:
                     self.__ButtonSavePressed()
                     repeat = False
                 self.__manager.process_events(event)
-            #self.__isButtonSavePressed()
-            self.__manager.update(UI_REFRESH_RATE)
             self.__window.getScreen().fill((0,0,0))
             self.__window.getScreen().blit(self.__background, (0,0))
-            self.__manager.draw_ui(self.__window.getScreen())
             for i in btnPos:
                 self.__window.getScreen().blit(i[0],i[1])
-            pg.display.flip()
+            self.__manager.draw_ui(self.__window.getScreen())
+            self.__manager.update(UI_REFRESH_RATE)
+            pg.display.update()
             self.__window.getClock().tick(60)

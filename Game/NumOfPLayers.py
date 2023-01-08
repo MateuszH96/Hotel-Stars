@@ -15,6 +15,7 @@ class NumOfPlayer(Window):
         pass
     
     def render(self):
+        #generownie obrazu i logi okna wyboru graczy
         pg.init()
         pg.display.set_caption(VG.GAME_NAME)
         repeat = True
@@ -71,5 +72,3 @@ class NumOfPlayer(Window):
         tmp = self.__players + tmp1
         if tmp >=1 and tmp <= 8:
             self.__players = tmp
-    
-    pass

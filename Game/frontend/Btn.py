@@ -3,6 +3,7 @@ import pygame as pg
 from . import ValuesFrontend as VF
 from . import GameObjects as GO
 class Btn(GO.GameObject):
+    #nadrzędna klasa tworzenia przycisków
     def __init__(self, input, x, y, width, height, isAvailable=True):
         super().__init__(x, y, width, height, isAvailable)
         self.setImage(input)

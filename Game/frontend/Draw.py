@@ -9,8 +9,4 @@ class Draw:
             centerY = i[0].get_rect().centery
             toReturn.append([i[0],(x-centerX,y-centerY)])
         return toReturn
-    @staticmethod
-    def drawObjects(window, listObjectsToDraw):
-        for i in listObjectsToDraw:
-            i     
     pass

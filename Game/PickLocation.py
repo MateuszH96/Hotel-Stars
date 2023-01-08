@@ -18,9 +18,11 @@ class PickLocation:
         self.__pickList = []
     
     def getPickList(self):
+        #zwracanie listy wyborów lokalizacji graczy
         return self.__pickList
      
     def render(self):
+        #generowanie obrazu i logiki wyboru lokalizacji gracza
         pg.init()
         pg.display.set_caption(VG.GAME_NAME)
         while self.__player<len(self.__names):
@@ -63,12 +65,11 @@ class PickLocation:
     def __createRectangleBorder(self):
         mouseX = pg.mouse.get_pos()[0]
         pos = int(mouseX/VG.WIDTH_RECTANGLE_PICK)
-        x1Rect = VG.WIDTH_RECTANGLE_PICK*pos
-        x2Rect = VG.WIDTH_RECTANGLE_PICK
-        print(x1Rect,0,x2Rect,VG.HEIGHT)
-        pg.draw.rect(self.__window.getScreen(),(255,0,0),(x1Rect,0,x2Rect,VG.HEIGHT),VG.BORDER_RECT_TO_PICK)
+        xRect = VG.WIDTH_RECTANGLE_PICK*pos
+        widthRect = VG.WIDTH_RECTANGLE_PICK
+        pg.draw.rect(self.__window.getScreen(),(255,0,0),(xRect,0,widthRect,VG.HEIGHT),VG.BORDER_RECT_TO_PICK)
         if self.__isPickedLocation:
-            x1Rect = VG.WIDTH_RECTANGLE_PICK*self.__pickedPosition
-            x2Rect = VG.WIDTH_RECTANGLE_PICK
-            pg.draw.rect(self.__window.getScreen(),(0,255,0),(x1Rect,0,x2Rect,VG.HEIGHT),VG.BORDER_RECT_PICKED)
+            xRect = VG.WIDTH_RECTANGLE_PICK*self.__pickedPosition
+            widthRect = VG.WIDTH_RECTANGLE_PICK
+            pg.draw.rect(self.__window.getScreen(),(0,255,0),(xRect,0,widthRect,VG.HEIGHT),VG.BORDER_RECT_PICKED)
             
