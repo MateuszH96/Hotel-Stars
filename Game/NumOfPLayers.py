@@ -6,7 +6,7 @@ from .frontend.BtnPickNumPlayer import BtnPickNumPlayer
 from .frontend.Collision import Collision
 from .frontend.Window import Window
 from .GameHotel import GameHotel
-class NumOfPlayer(Window):
+class NumOfPlayer:
     def __init__(self,screen, clock):
         self.__window = Window(clock,screen)
         self.__players = 1
