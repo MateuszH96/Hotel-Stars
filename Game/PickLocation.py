@@ -14,7 +14,7 @@ class PickLocation:
         self.__names = names
         self.__player = 0
         self.__font = pg.font.SysFont(
-            VG.FONT_NAME_LOCATION, VG.FONT_SIZE_LOCATION)
+            VG.FONT_NAME_LOCATION, VG.FONT_SIZE_LOCATION,bold=True)
         self.__createObjects()
         self.__isPickedLocation = False
         self.__pickedPosition = 0
@@ -53,7 +53,7 @@ class PickLocation:
         self.__locationToChoose = pg.image.load(VG.VG_IMG_PATH+"Location.png")
         self.__locationToChoose = pg.transform.scale(
             self.__locationToChoose, (VG.SIZE))
-        self.__bgName = Btn("Ok.png",VG.BACKGROUND_NAME_PLAYER_X,VG.BACKGROUND_NAME_PLAYER_Y,VG.BACKGROUND_NAME_PLAYER_WIDTH,VG.BACKGROUND_NAME_PLAYER_HEIGHT)
+        self.__bgName = Btn("EmptyBackground.png",VG.BACKGROUND_NAME_PLAYER_X,VG.BACKGROUND_NAME_PLAYER_Y,VG.BACKGROUND_NAME_PLAYER_WIDTH,VG.BACKGROUND_NAME_PLAYER_HEIGHT)
         self.__staticText = self.__font.render(
             "Teraz wybiera", True, VG.FONT_COLOR_LOCATION)
         self.__pickLocation = Btn(
