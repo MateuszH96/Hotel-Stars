@@ -2,7 +2,7 @@ import pygame as pg
 
 from . import ValueGame as VG
 from .frontend.Btn import Btn
-from .frontend.btnPickLocation import btnPickLocation
+from .btnPickLocation import btnPickLocation
 from .frontend.Collision import Collision
 from .frontend.Draw import Draw
 from .frontend.Window import Window

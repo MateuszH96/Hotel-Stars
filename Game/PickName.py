@@ -3,7 +3,7 @@ import pygame_gui as pg_ui
 
 from . import ValueGame as VG
 from .frontend import ValuesFrontend as VF
-from .frontend.BtnSaveNames import BtnSaveNames
+from .BtnSaveNames import BtnSaveNames
 from .frontend.Collision import Collision
 from .frontend.CreateManagerInputs import CreateManagerInputs
 from .frontend.Draw import Draw

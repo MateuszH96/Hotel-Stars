@@ -1,5 +1,4 @@
-from .Btn import Btn
-
+from .frontend.Btn import Btn
 
 class btnPickLocation(Btn):
     def __init__(self, input, x, y, width, height, isAvailable=True):

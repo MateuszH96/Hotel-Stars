@@ -1,23 +1,14 @@
 # klasa nadrzędna do tworzenia przycisków
 import pygame as pg
 
-from . import GameObjects as GO
+from .Img import Img
 from . import ValuesFrontend as VF
 
 
-class Btn(GO.GameObject):
+class Btn(Img):
     # nadrzędna klasa tworzenia przycisków
-    def __init__(self, input, x, y, width, height, isAvailable=True):
-        super().__init__(x, y, width, height, isAvailable)
-        self.setImage(input)
-
-    def setImage(self, input):
-        self.__image = pg.image.load(VF.IMG_PATH + input)
-        self.__image = pg.transform.scale(
-            self.__image, (self._width, self._height))
-
-    def getImage(self):
-        return self.__image
+    def __init__(self, image, x=0, y=0, width=0, height=0, isAvailable=True):
+        super().__init__(image, x, y, width, height, isAvailable)
 
     def onClick(self):
         pass

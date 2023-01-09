@@ -1,7 +1,7 @@
 from . import ValuesBacked as VB
-from . import Hotel
-from . import Location
-from . import Bank
+from .Hotel import Hotel
+from .Location import Location
+from .Bank import Bank
 
 
 class Player:
@@ -10,16 +10,18 @@ class Player:
     """
 
     # Constructors
-    def __init__(self, playerName, typeOfLocation):
-        self.__playerName = playerName
-        self.__numberOfMoney = VB.INITIAL_MONEY
+    def __init__(self, name, location):
+        self.__name = name
+        self.__money = VB.INITIAL_MONEY
+        self.__floor = 0
         self.__numberOfDebt = VB.INITIAL_DEBT
-        self.__location = Location.Location(typeOfLocation)
-        self.__hotel = Hotel.Hotel()
-        self.__bank = Bank.Bank()
+        self.__location = Location(location)
+        self.__hotel = Hotel()
+        self.__bank = Bank()
 
     # Getter
-
+    def getFloorNum(self):
+        return self.__floor
     def getHotel(self):
         return self.__hotel
 
@@ -29,23 +31,23 @@ class Player:
     def getBank(self):
         return self.__bank
 
-    def getPlayerName(self):
+    def getName(self):
         """
             Getter to return player name
 
             Returns:
                 str: player name
         """
-        return self.__playerName
+        return self.__name
 
-    def getNumberOfMoney(self):
+    def getMoney(self):
         """
             Getter to return number of money
 
             Returns:
                 str: number of money
        """
-        return self.__numberOfMoney
+        return self.__money
 
     def getNumberOfDebt(self):
         """
@@ -59,6 +61,10 @@ class Player:
     def addFloorValue(self):
         self.__hotel.addFloor()
 
+    #Setter
+    def setFloor(self,floor):
+        self.__floor = floor
+    
     def setRoomLevelCostValue(self, indexOfLevel, costValue):
         """
         Setter to set room cost value

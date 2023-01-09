@@ -1,5 +1,5 @@
-from ..PickLocation import PickLocation
-from .Btn import Btn
+from .PickLocation import PickLocation
+from .frontend.Btn import Btn
 
 
 class BtnSaveNames(Btn):

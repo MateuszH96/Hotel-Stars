@@ -1,5 +1,5 @@
-from ..PickName import PickName
-from .Btn import Btn
+from .PickName import PickName
+from .frontend.Btn import Btn
 
 
 class BtnPickNumPlayer(Btn):

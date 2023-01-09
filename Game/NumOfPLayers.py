@@ -2,10 +2,11 @@ import pygame as pg
 
 from . import ValueGame as VG
 from .frontend.Btn import Btn
-from .frontend.BtnPickNumPlayer import BtnPickNumPlayer
+from .BtnPickNumPlayer import BtnPickNumPlayer
 from .frontend.Collision import Collision
 from .frontend.Draw import Draw
 from .frontend.Window import Window
+from .backend.Player import Player
 from .GameHotel import GameHotel
 
 
@@ -42,7 +43,8 @@ class NumOfPlayer:
     def __isOkClicked(self):
         if Collision.isCollisionRectMouse(self.__btnOK):
             startValues = self.__btnOK.onClick(self.__players, self.__window)
-            game = GameHotel(startValues[0], startValues[1])
+            game = GameHotel(self.__window, self.__createListPlayers(startValues[0],startValues[1]))
+            game.game()
 
     def __createListObjects(self):
         text = self.__font.render(
@@ -82,3 +84,11 @@ class NumOfPlayer:
         tmp = self.__players + tmp1
         if tmp >= 1 and tmp <= 8:
             self.__players = tmp
+
+    def __createListPlayers(self, name, location):
+        toReturn = []
+
+        for i, j in zip(name, location):
+            toReturn.append(Player(i, j))
+
+        return toReturn

@@ -9,3 +9,6 @@ IMG_PATH = './Game/frontend/img/'
 #INPUT VALUES
 LENGTH_INPUT = 500
 HEIGHT_INPUT = 50
+
+class COLORS:
+    BLACK = (0,0,0)
