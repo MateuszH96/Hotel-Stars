@@ -19,9 +19,9 @@ class GetDataInput(GameObject):
         self.__background = pg.image.load(VG.VG_IMG_PATH+background)
         self.__background = pg.transform.scale(
             self.__background, (self._width, self._height))
-        self.__approve = Btn("Approve.jpg", int(
+        self.__approve = Btn("Approve.png", int(
             self._x - self._width/4), int(self._y+self._height/4), 100, 100)
-        self.__decline = Btn("Decline.jpg", int(
+        self.__decline = Btn("Decline.png", int(
             self._x + self._width/4), int(self._y+self._height/4), 100, 100)
 
     def getText(self, title="Wpisz tu swój text"):

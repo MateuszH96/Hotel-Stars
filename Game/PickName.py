@@ -16,14 +16,14 @@ class PickName:
         self.__numPlayer = numPlayer
         self.__window = window
         self.__btnSaveNames = BtnSaveNames(
-            "Start.jpg", VG.SAVE_NAME_COORDINATE_X, VG.SAVE_NAME_COORDINATE_Y, 400, 200)
+            "Start.png", VG.SAVE_NAME_COORDINATE_X, VG.SAVE_NAME_COORDINATE_Y, 400, 200)
         self.__inputsList = CreateManagerInputs.createInputsList(
             self.__numPlayer, VF.SIZE, "Podaj imię ", "Gracz")
         tmp = CreateManagerInputs.createManagerInputs(
             self.__inputsList, VF.SIZE)
         self.__manager = tmp[0]
         self.__inputs = tmp[1]
-        self.__background = pg.image.load(VG.VG_IMG_PATH + "Background.jpg")
+        self.__background = pg.image.load(VG.VG_IMG_PATH + "Background.png")
         self.__background = pg.transform.scale(self.__background, (VG.SIZE))
         self.__result = []
 

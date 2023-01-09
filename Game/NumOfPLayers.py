@@ -62,12 +62,12 @@ class NumOfPlayer:
 
     def __createObjects(self):
         self.__btnLeftArrow = Btn(
-            'LeftArrow.jpg', VG.LEFT_ARROW_COORDINATE_X, VG.LEFT_ARROW_COORDINATE_Y, 100, 100)
+            'LeftArrow.png', VG.LEFT_ARROW_COORDINATE_X, VG.LEFT_ARROW_COORDINATE_Y, 100, 100)
         self.__btnRightArrow = Btn(
-            'RightArrow.jpg', VG.RIGHT_ARROW_COORDINATE_X, VG.LEFT_ARROW_COORDINATE_Y, 100, 100)
+            'RightArrow.png', VG.RIGHT_ARROW_COORDINATE_X, VG.LEFT_ARROW_COORDINATE_Y, 100, 100)
         self.__btnOK = BtnPickNumPlayer(
-            'OK.jpg', VG.OK_COORDINATE_X, VG.OK_COORDINATE_X, 200, 100)
-        self.__background = pg.image.load(VG.VG_IMG_PATH+"Background.jpg")
+            'OK.png', VG.OK_COORDINATE_X, VG.OK_COORDINATE_X, 200, 100)
+        self.__background = pg.image.load(VG.VG_IMG_PATH+"Background.png")
         self.__background = pg.transform.scale(self.__background, (VG.SIZE))
 
     def __collision(self):

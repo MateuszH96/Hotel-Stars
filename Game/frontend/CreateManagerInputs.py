@@ -14,9 +14,9 @@ class CreateManagerInputs:
         for i in range(len(inputsList)):
             tmp = inputsList[i]
             inputVal = pg_ui.elements.UITextEntryLine(relative_rect=pg.Rect(((tmp.getX(), tmp.getY()),
-                                                                             (tmp.getWidth(), tmp.getHeight())),
+                                                                             (tmp.getWidth(), tmp.getHeight()))),
                                                                             manager=MANAGER,
-                                                                            object_id=tmp.getId()))
+                                                                            object_id=tmp.getId())
             inputVal.set_text(tmp.getText())
             listToReturn.append(inputVal)
         return (MANAGER, listToReturn)

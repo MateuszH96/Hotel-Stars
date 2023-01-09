@@ -50,13 +50,14 @@ class PickLocation:
             self.__window.getClock().tick(60)
 
     def __createObjects(self):
-        self.__locationToChoose = pg.image.load(VG.VG_IMG_PATH+"Location.jpg")
+        self.__locationToChoose = pg.image.load(VG.VG_IMG_PATH+"Location.png")
         self.__locationToChoose = pg.transform.scale(
             self.__locationToChoose, (VG.SIZE))
+        self.__bgName = Btn("Ok.png",VG.BACKGROUND_NAME_PLAYER_X,VG.BACKGROUND_NAME_PLAYER_Y,VG.BACKGROUND_NAME_PLAYER_WIDTH,VG.BACKGROUND_NAME_PLAYER_HEIGHT)
         self.__staticText = self.__font.render(
             "Teraz wybiera", True, VG.FONT_COLOR_LOCATION)
         self.__pickLocation = Btn(
-            "OK.jpg", VG.OK_COORDINATE_X, VG.OK_COORDINATE_Y, VG.OK_WIDTH, VG.OK_HEIGHT)
+            "OK.png", VG.OK_COORDINATE_X, VG.OK_COORDINATE_Y, VG.OK_WIDTH, VG.OK_HEIGHT)
 
     def __createListObject(self):
         dynamicText = self.__font.render(
@@ -64,6 +65,7 @@ class PickLocation:
         dynamicTextPosition = (VG.DYNAMIC_TEXT_COORDINATE_X,
                                VG.DYNAMIC_TEXT_COORDINATE_Y)
         listOfObjects = []
+        listOfObjects.append([self.__bgName.getImage(),(self.__bgName.getX(),self.__bgName.getY())])
         staticTextCoordinates = (
             VG.STATIC_TEXT_COORDINATE_X, VG.STATIC_TEXT_COORDINATE_Y)
         listOfObjects.append([self.__staticText, staticTextCoordinates])
