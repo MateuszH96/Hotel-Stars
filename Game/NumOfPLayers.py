@@ -13,7 +13,7 @@ from .GameHotel import GameHotel
 class NumOfPlayer:
     def __init__(self, screen, clock):
         self.__window = Window(clock, screen)
-        self.__players = 1
+        self.__players = 2
         self.__font = pg.font.SysFont(
             VG.FONT_NAME_NUM_PLAYER, VG.FONT_SIZE_NUM_PLAYER)
         self.__createObjects()
@@ -82,7 +82,7 @@ class NumOfPlayer:
     def __changePlayersValue(self):
         tmp1 = VG.CHANGE_VALUE_PLAYERS[self.__collision()]
         tmp = self.__players + tmp1
-        if tmp >= 1 and tmp <= 8:
+        if tmp >= 2 and tmp <= 8:
             self.__players = tmp
 
     def __createListPlayers(self, name, location):

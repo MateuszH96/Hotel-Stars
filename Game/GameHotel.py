@@ -6,8 +6,10 @@ from .backend.Player import Player
 from .backend.Hotel import Hotel
 from .backend.Room import Room
 from .frontend.Btn import Btn
+from .frontend.Collision import Collision
 import pygame as pg
-
+#TODO:
+#__roomListShow służy do wyświetlania, potrzebuję jeszcze listę przycisków pokojów
 
 class GameHotel:
     def __init__(self, window, players: Player):
@@ -41,7 +43,7 @@ class GameHotel:
         self.__money = self.__font.render("$"+
             str(self.__players[self.__playerNum].getMoney()), True,VG.GAME_FONT_COLOR)
         self.__createRoomList()
-        toReturn = self.__roomList
+        toReturn = self.__roomListShow
         self.__createMenubarList()
         toReturn += self.__menuBarList
         roomLevel = self.__font.render(str(self.__players[self.__playerNum].getFloorNum()+1),True, VG.GAME_FONT_COLOR)
@@ -52,7 +54,8 @@ class GameHotel:
         listRoom = self.__players[self.__playerNum].getHotel().getFloor(self.__players[self.__playerNum].getFloorNum())
         upLineRoom =0
         downLineRoom = 0
-        self.__roomList =[]
+        self.__roomList=[]
+        self.__roomListShow =[]
         for i in range(len(listRoom)):
             imgName = "RoomLevel" + str(listRoom[i].getRoomLevel()) + ".png"
             if i < VG.NEXT_LINE_ROOM:
@@ -63,8 +66,9 @@ class GameHotel:
                 y=VG.DOWN_ROOM_Y
                 x=int(downLineRoom*VG.WIDTH_ROOM+VG.WIDTH_ROOM/2)
                 downLineRoom +=1
-            tmp = Img(imgName,x,y,VG.WIDTH_ROOM,VG.HEIGHT_ROOM)
-            self.__roomList.append([tmp.getImage(),(x,y)])
+            tmp = Btn(imgName,x,y,VG.WIDTH_ROOM,VG.HEIGHT_ROOM)
+            self.__roomList.append(tmp)
+            self.__roomListShow.append([tmp.getImage(),(x,y)])
     
     def __createMenubarList(self):
         self.__menuBarList = []
@@ -97,5 +101,23 @@ class GameHotel:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     pg.quit()
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    self.__btnPressed()
             pg.display.update()
             self.__window.getClock().tick(60)
+    def __btnPressed(self):
+        if Collision.isCollisionRectMouse(self.__menuBar):
+            self.__menubarPressed()
+        else:
+            self.__roomListShowPressed()
+        print("--------")
+        return
+    
+    def __menubarPressed(self):
+        return
+    
+    def __roomListShowPressed(self):
+        for i in range(len(self.__roomList)):
+            if Collision.isCollisionRectMouse(self.__roomList[i]):
+                print(f"Pokój nr{i+1}")
+        return
