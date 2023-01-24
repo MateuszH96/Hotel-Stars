@@ -5,7 +5,7 @@ class BtnAddFloor(Btn):
         super().__init__(image, x, y, width, height, isAvailable)
     
     def onClick(self,player: Player):
-        if player.getMoney >= 20000:
+        if player.getMoney() >= 20000:
             player.getHotel().addFloor()
             player.subMoney(20000)
     
