@@ -6,7 +6,7 @@ class BtnUpgradeRoom(Btn):
         super().__init__(image, x, y, width, height, isAvailable)
         
     def onClick(self, player: Player, floor,room):
-        if player.getMoney() >= 2000:
+        if player.getMoney() >= 2000 and player.getHotel().getRoomLevel(floor,room).getRoomLevel() > 0 and player.getHotel().getRoomLevel(floor,room).getRoomLevel() < 4:
             player.getHotel().changeLevelRoom(floor,room)
             player.subMoney(2000)
         pass

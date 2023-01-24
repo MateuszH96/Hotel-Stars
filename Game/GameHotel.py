@@ -7,7 +7,6 @@ from .backend.Hotel import Hotel
 from .backend.Room import Room
 from .frontend.Btn import Btn
 from .frontend.Collision import Collision
-# btns menubar
 from .BtnNextFloor import BtnNextFloor
 from .BtnPrevFloor import BtnPrevFloor
 from .BtnAddFloor import BtnAddFloor
@@ -31,8 +30,8 @@ class GameHotel:
         self.__playerNum = 0
         self.__players = players
         self.__isRectangleBorderDraw = False
-        self.__rectangleBorder = [0,0,0,0]
-        self.__floorToChange =0
+        self.__rectangleBorder = [0, 0, 0, 0]
+        self.__floorToChange = 0
         self.__rooomToChange = 0
         self.__createStaticObjects()
 
@@ -107,11 +106,11 @@ class GameHotel:
         self.__menuBarList.append(Draw.getImgValuesToCenter(btnBuyRoom))
 
         btnUpgradeRoom = BtnUpgradeRoom("UpgradeRoom.png", VG.UPGRADE_ROOM_X,
-                             VG.UPGRADE_ROOM_Y, VG.UPGRADE_ROOM_WIDTH, VG.UPGRADE_ROOM_HEIGHT)
+                                        VG.UPGRADE_ROOM_Y, VG.UPGRADE_ROOM_WIDTH, VG.UPGRADE_ROOM_HEIGHT)
         self.__menuBarList.append(Draw.getImgValuesToCenter(btnUpgradeRoom))
 
         btnDowngradeRoom = BtnDowngradeRoom("DowngradeRoom.png", VG.DOWNGRADE_ROOM_X,
-                               VG.DOWNGRADE_ROOM_Y, VG.DOWNGRADE_ROOM_WIDTH, VG.DOWNGRADE_ROOM_HEIGHT)
+                                            VG.DOWNGRADE_ROOM_Y, VG.DOWNGRADE_ROOM_WIDTH, VG.DOWNGRADE_ROOM_HEIGHT)
         self.__menuBarList.append(Draw.getImgValuesToCenter(btnDowngradeRoom))
 
         btnBank = BtnBank("Bank.png", VG.SWITCH_TO_BANK_X, VG.SWITCH_TO_BANK_Y,
@@ -122,10 +121,10 @@ class GameHotel:
                                   VG.BTN_PASS_TURN__WIDTH, VG.BTN_PASS_TURN__HEIGHT)
         self.__menuBarList.append(Draw.getImgValuesToCenter(btnPassTurn))
         btnPassRound = BtnPassRound("Pass.png", VG.BTN_PASS_ROUND__X, VG.BTN_PASS_ROUND__Y,
-                                  VG.BTN_PASS_ROUND__WIDTH, VG.BTN_PASS_ROUND__HEIGHT)
+                                    VG.BTN_PASS_ROUND__WIDTH, VG.BTN_PASS_ROUND__HEIGHT)
         self.__menuBarList.append(Draw.getImgValuesToCenter(btnPassRound))
         self.__menuBarListToColl = [btnPrevFloor, btnNextFloor, btnAddFloor,
-                                    btnBuyRoom, btnUpgradeRoom, btnDowngradeRoom, btnBank, btnPassTurn,btnPassRound]
+                                    btnBuyRoom, btnUpgradeRoom, btnDowngradeRoom, btnBank, btnPassTurn, btnPassRound]
 
     def game(self):
         for i in range(16):
@@ -148,11 +147,13 @@ class GameHotel:
                             Draw.draw(staticObjects+[[self.__name, VG.GAME_NAME_COORDINATE], [
                                 self.__money, VG.GAME_MONEY_COORDINATE]], window=self.__window.getScreen())
                             listDynamicObjects = self.__createDynamicObjectList()
-                            listDynamicObjects = Draw.transfomrToCenter(listDynamicObjects)
+                            listDynamicObjects = Draw.transfomrToCenter(
+                                listDynamicObjects)
                             Draw.draw(listDynamicObjects,
-                                        window=self.__window.getScreen())
+                                      window=self.__window.getScreen())
                             if self.__isRectangleBorderDraw:
-                                pg.draw.rect(self.__window.getScreen(),(0,255,0),self.__rectangleBorder,4)
+                                pg.draw.rect(self.__window.getScreen(
+                                ), (0, 255, 0), self.__rectangleBorder, 4)
                                 pass
                             for event in pg.event.get():
                                 if event.type == pg.QUIT:
@@ -169,6 +170,7 @@ class GameHotel:
                 if count == len(self.__players):
                     self.__makeCalc()
                     repeatEveryPlayer = False
+
     def __btnPressed(self):
 
         if Collision.isCollisionRectMouse(self.__menuBar, False):
@@ -180,28 +182,31 @@ class GameHotel:
     def __menubarPressed(self):
         for i in self.__menuBarListToColl:
             if Collision.isCollisionRectMouse(i):
-                if not(isinstance(i,BtnDowngradeRoom) or isinstance(i,BtnUpgradeRoom)):
+                if not (isinstance(i, BtnDowngradeRoom) or isinstance(i, BtnUpgradeRoom)):
                     i.onClick(self.__players[self.__playerNum])
                     self.__isRectangleBorderDraw = False
                 else:
-                    i.onClick(self.__players[self.__playerNum],self.__floorToChange,self.__rooomToChange)
+                    i.onClick(self.__players[self.__playerNum],
+                              self.__floorToChange, self.__rooomToChange)
         return
 
     def __roomListShowPressed(self):
         for i in range(len(self.__roomList)):
             if Collision.isCollisionRectMouse(self.__roomList[i]):
                 self.__isRectangleBorderDraw = True
-                self.__rectangleBorder = [self.__roomList[i].getX()-self.__roomList[i].getWidth()/2,self.__roomList[i].getY()-self.__roomList[i].getHeight()/2,self.__roomList[i].getWidth(),self.__roomList[i].getHeight()]
-                self.__floorToChange = self.__players[self.__playerNum].getFloorNum()
-                tmpOffset=0
-                if self.__roomList[i].getY() > VG.WIDTH/2:
-                    tmpOffset =5
-                self.__rooomToChange =tmpOffset+int(self.__roomList[i].getX()/self.__roomList[i].getWidth())
-                print(f"Pokój nr{i+1}")
+                self.__rectangleBorder = [self.__roomList[i].getX()-self.__roomList[i].getWidth()/2, self.__roomList[i].getY(
+                )-self.__roomList[i].getHeight()/2, self.__roomList[i].getWidth(), self.__roomList[i].getHeight()]
+                self.__floorToChange = self.__players[self.__playerNum].getFloorNum(
+                )
+                tmpOffset = 0
+                if self.__roomList[i].getY() > VG.HEIGHT/2:
+                    tmpOffset = 5
+                self.__rooomToChange = tmpOffset + \
+                    int(self.__roomList[i].getX() /
+                        self.__roomList[i].getWidth())
         return
 
     def __makeCalc(self):
         for i in self.__players:
             i.CalcEndRound()
         pass
-    

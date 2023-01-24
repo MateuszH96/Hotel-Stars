@@ -141,7 +141,7 @@ class Player:
         debt = 0
         if self.__isLoan:
             debt = self.__bank.getLoanToReturn()
-        self.__debtRatio = 1+self.__money/(debt + math.abs(self.__money))
+        self.__debtRatio = 1+self.__money/(debt + abs(self.__money))
         pass
     def getResult(self):
         return self.__debtRatio  * self.__customerHappinesPtr * self.__employeesHappinesPtr
