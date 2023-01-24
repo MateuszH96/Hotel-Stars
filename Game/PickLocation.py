@@ -55,7 +55,7 @@ class PickLocation:
             self.__locationToChoose, (VG.SIZE))
         self.__bgName = Btn("EmptyBackground.png",VG.BACKGROUND_NAME_PLAYER_X,VG.BACKGROUND_NAME_PLAYER_Y,VG.BACKGROUND_NAME_PLAYER_WIDTH,VG.BACKGROUND_NAME_PLAYER_HEIGHT)
         self.__staticText = self.__font.render(
-            "Teraz wybiera", True, VG.FONT_COLOR_LOCATION)
+            "Teraz wybiera", True, VG.FONT_COLOR_LOCATION) #tutaj przykład tekstu
         self.__pickLocation = Btn(
             "OK.png", VG.OK_COORDINATE_X, VG.OK_COORDINATE_Y, VG.OK_WIDTH, VG.OK_HEIGHT)
 
@@ -68,7 +68,7 @@ class PickLocation:
         listOfObjects.append([self.__bgName.getImage(),(self.__bgName.getX(),self.__bgName.getY())])
         staticTextCoordinates = (
             VG.STATIC_TEXT_COORDINATE_X, VG.STATIC_TEXT_COORDINATE_Y)
-        listOfObjects.append([self.__staticText, staticTextCoordinates])
+        listOfObjects.append([self.__staticText, staticTextCoordinates]) #tutaj przykład tekstu
         listOfObjects.append([self.__pickLocation.getImage(
         ), (self.__pickLocation.getX(), self.__pickLocation.getY())])
         listOfObjects.append([dynamicText, dynamicTextPosition])

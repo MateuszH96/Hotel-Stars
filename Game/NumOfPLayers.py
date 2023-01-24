@@ -8,7 +8,7 @@ from .frontend.Draw import Draw
 from .frontend.Window import Window
 from .backend.Player import Player
 from .GameHotel import GameHotel
-
+from .frontend.Img import Img
 
 class NumOfPlayer:
     def __init__(self, screen, clock):
@@ -50,6 +50,8 @@ class NumOfPlayer:
         text = self.__font.render(
             str(self.__players), True, VG.FONT_COLOR_NUM_PLAYER)
         toReturn = []
+        numOfPlayerTxT = Img('NumberOfPlayers.png', VG.WIDTH/2, VG.HEIGHT/4, 600,150)
+        toReturn.append([numOfPlayerTxT.getImage(),(numOfPlayerTxT.getX(),numOfPlayerTxT.getY())])
         leftArrowCoordinates = (
             self.__btnLeftArrow.getX(), self.__btnLeftArrow.getY())
         toReturn.append([self.__btnLeftArrow.getImage(), leftArrowCoordinates])

@@ -1,0 +1,11 @@
+from .frontend.Btn import Btn
+from .backend.Player import Player
+class BtnAddFloor(Btn):
+    def __init__(self, image, x=0, y=0, width=0, height=0, isAvailable=True):
+        super().__init__(image, x, y, width, height, isAvailable)
+    
+    def onClick(self,player: Player):
+        if player.getMoney >= 20000:
+            player.getHotel().addFloor()
+            player.subMoney(20000)
+    

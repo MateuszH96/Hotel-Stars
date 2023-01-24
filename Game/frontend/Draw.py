@@ -1,3 +1,4 @@
+from .Img import Img
 
 class Draw:
     @staticmethod
@@ -20,3 +21,11 @@ class Draw:
     @staticmethod
     def getImgValuesToCenter(img):
         return [img.getImage(),(img.getX(),img.getY())]
+    
+    @staticmethod
+    def drawRectancgleBorder(img: Img, screen):
+        widthRec = img.getWidth()
+        heightRec = img.getHeight()
+        xRec = img.getX()
+        yRec = img.getY
+        

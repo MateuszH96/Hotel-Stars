@@ -4,31 +4,16 @@ from . import ValuesBacked as VB
 
 
 class Location:
-    """
-        Class is responsible for operations like create a Location
-    """
-
     # Constructors
     def __init__(self, typeOfLocation):
         self.__numberOfCustomers = VB.INITIAL_NUMBER_OF_CUSTOMERS
         self.__ptrVIP = VB.LOCATION_VIP_PTR[typeOfLocation]
+        self.__generateNewNumberOfCustomer()
 
     def getNumberOfVipCustomers(self):
-        """
-            Getter to return number of vip clients
-
-            Returns:
-                int: Number of vip customers
-        """
         return self.__numOfVIP
 
     def getNumberOfNormalCustomers(self):
-        """
-            Getter to return number of normal clients
-
-            Returns:
-                int: Number of vip customers
-        """
         return self.__numberOfCustomers - self.__numOfVIP
 
     def changeTurn(self):  # wywoałnie zmiany tury
